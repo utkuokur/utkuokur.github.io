@@ -16,7 +16,8 @@ from running Jekyll). All links between pages are relative.
 | `cv/paperlist.sty` | Formatting and countdown numbering for both lists |
 | `scripts/build_publications.py` | Copies both lists into their website pages |
 | `slides/` | Talk slides (PDF), linked from the website only |
-| `assets/` | Stylesheet, favicon, link icons (arXiv, ORCID, GitHub from Simple Icons, CC0) |
+| `assets/` | Stylesheet, favicon, link icons (arXiv, Google Scholar, ORCID, GitHub from Simple Icons, CC0) |
+| `cv/icons/` | Logos used in the CV (PDF, converted from `assets/icons/`) |
 | `lean-challenges/` | Redirect to the Ten Challenges website (keep: older links point here) |
 
 The sidebar is repeated in each page, so a new nav entry has to be added to
@@ -45,10 +46,7 @@ To use the list in another LaTeX document (a grant application, say), put
 `\input{other_writings}`) where the list should go, with `cv/` on the TeX
 search path or the files copied next to the document.
 
-The `CV` links (sidebar of every page, and the link row on the home page)
-still point to the old PDF on Google Drive. To use the compiled CV instead,
-change them to `cv/cv.pdf` on the home page and `../cv/cv.pdf` on the other
-pages.
+The `CV` link in the sidebar opens `cv/cv.pdf`.
 
 ## Preview locally
 
