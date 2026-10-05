@@ -28,6 +28,9 @@ body {
 
 a { color: var(--accent); text-underline-offset: 2px; }
 a:hover { color: var(--accent-strong); }
+/* Links in running text that should not stand out (e.g. thesis titles). */
+a.plain-link { color: inherit; }
+a.plain-link:hover { color: var(--accent); }
 
 /* ---------- layout ---------- */
 
