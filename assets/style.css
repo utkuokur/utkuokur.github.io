@@ -1,0 +1,213 @@
+/* Utku Okur — personal site */
+
+:root {
+  --bg: #fbfaf7;
+  --text: #1d1d1f;
+  --muted: #5d6166;
+  --rule: #e2ded5;
+  --accent: #1f6f5c;
+  --accent-strong: #134c3e;
+  --c1: #1f6f5c;
+  --c2: #b5542a;
+  --c3: #3b5ba5;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171a;
+    --text: #e8e6e1;
+    --muted: #a3a7ab;
+    --rule: #2d3136;
+    --accent: #6cc3ad;
+    --accent-strong: #9ad9c8;
+    --c1: #6cc3ad;
+    --c2: #e3946a;
+    --c3: #93abe8;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #15171a;
+  --text: #e8e6e1;
+  --muted: #a3a7ab;
+  --rule: #2d3136;
+  --accent: #6cc3ad;
+  --accent-strong: #9ad9c8;
+  --c1: #6cc3ad;
+  --c2: #e3946a;
+  --c3: #93abe8;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { color: var(--accent-strong); }
+
+/* ---------- layout ---------- */
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 3.5rem;
+}
+
+.sidebar-inner {
+  position: sticky;
+  top: 0;
+  padding: 52px 0 24px;
+  text-align: right;
+}
+
+.site-name {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+  text-decoration: none;
+}
+.site-name:hover { color: var(--text); }
+
+.site-tagline {
+  margin: .4rem 0 2rem;
+  color: var(--muted);
+  font-size: .875rem;
+  line-height: 1.45;
+}
+
+.nav ul { list-style: none; margin: 0; padding: 0; }
+.nav li { margin: .1rem 0; }
+.nav a {
+  display: inline-block;
+  padding: .28rem .8rem .28rem 0;
+  border-right: 3px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav a:hover { color: var(--accent); }
+.nav a[aria-current="page"] {
+  border-right-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.theme-toggle {
+  margin-top: 2rem;
+  padding: .25rem .85rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: .8125rem;
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+
+main { padding: 52px 0 32px; min-width: 0; }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.25; }
+h1 { font-size: 2.1rem; margin: 0 0 1.1rem; }
+h2 {
+  font-size: 1.4rem;
+  margin: 2.6rem 0 1.1rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--rule);
+}
+h3 { font-size: 1.12rem; margin: 0 0 .35rem; }
+
+.portrait {
+  float: right;
+  width: 170px;
+  height: auto;
+  margin: .3rem 0 1rem 1.75rem;
+  border-radius: 4px;
+}
+
+.profile-links { color: var(--muted); }
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: .8125rem;
+}
+
+/* ---------- research topics ---------- */
+
+.topics { display: grid; gap: 2.25rem; }
+
+.topic {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+.topic p { margin: 0; }
+
+.figure { width: 100%; height: auto; display: block; }
+.figure .vtx { fill: var(--text); }
+.figure .c1 { --c: var(--c1); }
+.figure .c2 { --c: var(--c2); }
+.figure .c3 { --c: var(--c3); }
+.figure .hedge { fill: var(--c); stroke: var(--c); stroke-width: 20; stroke-linejoin: round; opacity: .28; }
+.figure .arc line { stroke: var(--c); stroke-width: 2; }
+.figure .arc polygon { fill: var(--c); }
+.figure .tree { fill: none; stroke: var(--text); stroke-width: 1.6; }
+.figure .match line { stroke: var(--c); stroke-width: 1.4; stroke-dasharray: 3 2.5; }
+.figure .edge line { stroke: var(--c); stroke-width: 2; }
+
+/* ---------- lists of papers and projects ---------- */
+
+.entries { list-style: none; margin: 0; padding: 0; }
+.entries li {
+  margin: 0 0 1.35rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+}
+.entry-title { font-family: var(--serif); font-weight: 600; font-size: 1.12rem; }
+.entry-meta { color: var(--muted); }
+.entry-links { font-size: .9rem; }
+.entry-links a { margin-right: .8rem; }
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 760px) {
+  body { font-size: 1rem; }
+  .page { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
+  .sidebar-inner { position: static; padding: 24px 0 0; text-align: left; }
+  .site-tagline { margin-bottom: .9rem; }
+  .nav ul { display: flex; flex-wrap: wrap; gap: .1rem 1.1rem; }
+  .nav a { padding: .2rem 0; border-right: 0; border-bottom: 2px solid transparent; }
+  .nav a[aria-current="page"] { border-bottom-color: var(--accent); }
+  .theme-toggle { margin-top: .9rem; }
+  main { padding-top: 24px; }
+  h1 { font-size: 1.75rem; }
+  .portrait { float: none; display: block; margin: 0 0 1rem; }
+  .topic { grid-template-columns: 1fr; gap: .5rem; }
+  .topic .figure { width: 104px; }
+}
+
+@media print {
+  .sidebar, .theme-toggle { display: none; }
+  .page { display: block; }
+}

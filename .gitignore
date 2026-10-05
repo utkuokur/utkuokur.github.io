@@ -1,0 +1,7 @@
+# LaTeX build files (cv/cv.pdf itself is meant to be committed)
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
