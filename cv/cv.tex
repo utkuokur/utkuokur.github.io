@@ -1,39 +1,130 @@
-% Curriculum vitae of Utku Okur.
-%
-% Build:  latexmk -pdf cv.tex   (writes cv.pdf next to this file)
-% Then commit cv.pdf and point the "CV" links on the website to /cv/cv.pdf.
-% This file is public: leave out home address, phone number and birth date.
-
 \documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[margin=2.5cm]{geometry}
-\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor={rgb,1:red,0.12;green,0.43;blue,0.36}}
+\usepackage{paperlist}	
 
-\pagestyle{empty}
 \setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
+
+% \entry{dates}{text}: dates in a fixed column, text wrapping beside it.
+\newlength{\datewidth}
+\setlength{\datewidth}{2.6cm}
+\newcommand{\entry}[2]{%
+\parbox[t]{\datewidth}{#1}%
+\parbox[t]{\dimexpr\linewidth-\datewidth\relax}{\raggedright #2}\par\smallskip}
 
 \begin{document}
 
 {\LARGE\bfseries Utku Okur}
 
+\section*{Contact information}
+
+Faculty of Mathematics and Computer Science, TU Bergakademie Freiberg\\
+Prüferstraße 1, 09599 Freiberg, Germany\\
+Email: \href{mailto:utkuokur@gmail.com}{utkuokur@gmail.com}\\
+URL: \href{https://utkuokur.github.io/}{https://utkuokur.github.io/}
+
+\medskip
+Born: January 5, 1992 --- Izmir, Turkey
+
 \section*{Current position}
+
+\entry{2026--}{Postdoc, Institute of Discrete Mathematics and Algebra, TU Bergakademie Freiberg, Germany}
+
+\section*{Areas of interest}
+
+Discrete mathematics, algebraic graph theory, combinatorics, formal verification (Lean~4)
 
 \section*{Education}
 
-\section*{Research interests}
+\entry{2020--2025}{PhD in Mathematics, University of South Carolina, USA.
+Advisor: Joshua Cooper.\\
+Thesis: \emph{\href{https://scholarcommons.sc.edu/etd/8621/}{Coefficients
+of the characteristic polynomial of a hypergraph and their combinatorial
+properties}}}
+\entry{2018--2020}{MSc in Mathematics, Bilkent University, Turkey.
+Advisor: Laurence Barker.\\
+Thesis: \emph{Mackey decomposition for Brauer pairs}}
+\entry{2013--2018}{BSc in Mathematics and BA in Philosophy, Boğaziçi
+University, Turkey}
 
-\section*{Publications}
+\section*{Research publications}
 
-\section*{Preprints}
+\input{publications}
+
+\section*{GitHub repositories}
+
+\begin{itemize}[leftmargin=*, itemsep=.2\baselineskip]
+\item Hypergraph calculations:\\
+\href{https://github.com/utkuokur/Hypergraph-Programs}{https://github.com/utkuokur/Hypergraph-Programs}
+\item Tanglegram calculations:\\
+\href{https://github.com/utkuokur/binary_trees_and_tanglegrams}{https://github.com/utkuokur/binary\_trees\_and\_tanglegrams}
+\end{itemize}
+
+\section*{Other writings}
+
+\input{other_writings}
 
 \section*{Talks}
 
-\section*{Teaching}
+\entry{2024}{Discrete Math and Combinatorics Seminar, University of South
+Carolina, Columbia/SC.}
+\entry{2023}{\emph{Invited Speaker}: Joint Mathematics Meetings, AMS Special
+Session on Trees in Many Contexts, Boston/MA.}
+\entry{2023}{Graduate Mini-Conference in Discrete Mathematics, University of
+South Carolina, Columbia/SC.}
+\entry{2023}{Discrete Math and Combinatorics Seminar, University of South
+Carolina, Columbia/SC.}
+
+\section*{Workshops attended}
+
+\entry{2026}{\href{https://cicm-conference.org/2026/cicm.php?event=ai4math}{Workshop
+on Artificial Intelligence for Mathematics (AI4Math)}, Conference on Intelligent
+Computer Mathematics (CICM 2026), September 21, 2026, Ljubljana.}
+\entry{2022}{Trees in Many Contexts, Mathematics Research Community (MRC)
+Conference, June 5--11, 2022, Boston.}
+
+\section*{Grants, scholarships \& awards}
+
+\entry{2013--2018}{TUBITAK Scholarship for Fundamental Sciences}
+\entry{2019}{Orhan Alisbah Fellowship Award}
+
+\section*{Teaching summary}
+
+\entry{2018--2020}{Teaching Assistant at Bilkent University, Turkey}
+\entry{2019--2020}{Research Assistant at Middle Eastern Technical University
+(METU), Turkey}
+\entry{2020--2021}{Teaching Assistant at the University of South Carolina
+(UofSC), USA}
+\entry{2021--present}{Instructor of Record at the University of South Carolina
+(UofSC), USA}
+
+\section*{Teaching experience}
+
+\entry{2020}{\emph{Teaching Assistant (TA)}: Math 142 -- Calculus II}
+\entry{2021}{\emph{Instructor}: Math 115 (Precalculus Mathematics)}
+\entry{2022}{\emph{Instructor}: Math 115, Math 122 (Calculus for Business
+Administration \& Social Sciences), Math 111 (Basic College Mathematics)}
+\entry{2023}{\emph{Instructor}: Math 115, Math 122, Math 241 (Vector
+Calculus)}
+\entry{2024}{\emph{Instructor}: Math 122, Math 111, Math 170 (Finite
+Mathematics)}
 
 \section*{Service}
 
-\section*{Software and formalization}
+\entry{2024}{\emph{Organizer}: Discrete Math and Combinatorics Seminar,
+University of South Carolina}
+\entry{2023--2025}{\emph{Referee}: Linear and Multilinear Algebra, The
+Electronic Journal of Linear Algebra, Theoretical Computer Science, Discrete
+Mathematics}
+
+\vfill
+\begin{center}\footnotesize Last updated: \today\end{center}
 
 \end{document}

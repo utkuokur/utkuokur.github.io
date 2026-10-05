@@ -1,0 +1,41 @@
+% paperlist.sty: publication lists, used by the CV and reusable in any other
+% document (grant applications, ...):
+%
+%   \usepackage{paperlist}   % load hyperref as well for clickable links
+%   \input{publications}     % numbered list, cv/publications.tex
+%   \input{other_writings}   % unnumbered list, cv/other_writings.tex
+%
+% \paper{authors}{title}{venue}{arXiv id}{DOI} typesets one entry; leave the
+% last two empty ({}) when there is no arXiv id or DOI. The paperlist
+% environment numbers its entries downwards, so the first (newest) one shows
+% the total. The total is read back from the .aux file, so a build needs two
+% LaTeX runs (latexmk does this automatically). The otherlist environment
+% takes the same entries but leaves them unnumbered and out of that total.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{paperlist}[2026/10/05 Publication lists]
+\RequirePackage{enumitem}
+
+% Plain-text links when the document does not load hyperref.
+\AtBeginDocument{\providecommand{\href}[2]{#2}}
+
+% \webonly{...}: shown on the website only (e.g. a link to talk slides); the
+% PDF leaves it out.
+\newcommand{\webonly}[1]{}
+
+\newcommand{\paper}[5]{%
+  \item #1, \emph{#2}, #3.%
+  \ifx\relax#4\relax\else\ \href{https://arxiv.org/abs/#4}{arXiv:#4}\fi
+  \ifx\relax#5\relax\else\ \href{https://doi.org/#5}{doi:#5}\fi}
+
+\providecommand{\paperstotal}{0}
+\DeclareRobustCommand{\paperlabel}{\the\numexpr\paperstotal+1-\value{enumi}\relax.}
+\newenvironment{paperlist}%
+  {\begin{enumerate}[leftmargin=2.2em, itemsep=.4\baselineskip,
+     label=\paperlabel, before=\raggedright]}%
+  {\immediate\write\@auxout{\gdef\string\paperstotal{\the\c@enumi}}%
+   \end{enumerate}}
+
+\newenvironment{otherlist}%
+  {\begin{itemize}[leftmargin=2.2em, itemsep=.4\baselineskip,
+     before=\raggedright]}%
+  {\end{itemize}}

@@ -1,34 +1,59 @@
-# personal-webpage
+# utkuokur.github.io
 
 Personal website of Utku Okur, served by GitHub Pages at
-<https://utkuokur.github.io/personal-webpage/>. Plain HTML and CSS, no build
-step (`.nojekyll` keeps GitHub from running Jekyll). All links between pages
-are relative, so the site works under any URL prefix.
+<https://utkuokur.github.io/>. Plain HTML and CSS (`.nojekyll` keeps GitHub
+from running Jekyll). All links between pages are relative.
 
 | Path | Content |
 | --- | --- |
-| `index.html` | Home: short bio and research topics |
-| `publications/` | Journal articles, preprints, theses |
-| `code/` | Selected repositories and formalization projects |
-| `contact/` | Address and profile links |
-| `cv/cv.tex` | CV source (skeleton, to be filled in) |
-| `assets/` | Stylesheet, light/dark toggle, favicon |
-| `lean-challenges/` | Redirect to the Ten Challenges website (from when this repo was `utkuokur.github.io`) |
+| `index.html` | Home: short bio |
+| `publications/` | Papers (generated from `cv/publications.tex`) and theses |
+| `other-writings/` | Work outside journals (generated from `cv/other_writings.tex`) |
+| `contact/` | Address |
+| `cv/cv.tex` | CV source |
+| `cv/publications.tex` | The list of papers, newest first |
+| `cv/other_writings.tex` | Workshop abstracts, formalisations, unpublished preprints, newest first |
+| `cv/paperlist.sty` | Formatting and countdown numbering for both lists |
+| `scripts/build_publications.py` | Copies both lists into their website pages |
+| `slides/` | Talk slides (PDF), linked from the website only |
+| `assets/` | Stylesheet, favicon, link icons (arXiv, ORCID, GitHub from Simple Icons, CC0) |
+| `lean-challenges/` | Redirect to the Ten Challenges website (keep: older links point here) |
 
 The sidebar is repeated in each page, so a new nav entry has to be added to
 all four `index.html` files.
 
-## CV
+## Papers and CV
 
-Build with `latexmk -pdf cv/cv.tex` (run inside `cv/`), commit `cv/cv.pdf`,
-and change the `CV` links (sidebar of every page, and the link row on the
-home page) from the Google Drive URL to `cv/cv.pdf` on the home page and
-`../cv/cv.pdf` on the other pages.
+The papers are listed once, as `\paper{authors}{title}{venue}{arXiv id}{DOI}`
+entries in `cv/publications.tex`, newest first. Work that is not in a journal
+(workshop abstracts, formalisations, preprints that will not be published) goes
+in `cv/other_writings.tex` in the same format; it is listed without numbers
+and does not count towards the paper total. Anything inside `\webonly{...}`
+in an entry (such as a link to talk slides in `slides/`) appears on the website
+but not in the CV. After editing either file or the CV, run
+
+```sh
+make
+```
+
+in the repository root. It rewrites the lists on the Publications and Other
+writings pages (same order as in the files) and compiles `cv/cv.pdf`. Then
+commit and push.
+
+To use the list in another LaTeX document (a grant application, say), put
+`\usepackage{paperlist}` in its preamble and `\input{publications}` (and/or
+`\input{other_writings}`) where the list should go, with `cv/` on the TeX
+search path or the files copied next to the document.
+
+The `CV` links (sidebar of every page, and the link row on the home page)
+still point to the old PDF on Google Drive. To use the compiled CV instead,
+change them to `cv/cv.pdf` on the home page and `../cv/cv.pdf` on the other
+pages.
 
 ## Preview locally
 
 ```sh
-python3 -m http.server 8000 --directory /home/uokur/the_workspace/personal-webpage
+python3 -m http.server 8000 --directory /home/uokur/the_workspace/utkuokur.github.io
 ```
 
 then open <http://localhost:8000/>.
