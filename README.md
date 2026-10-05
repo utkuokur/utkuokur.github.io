@@ -16,7 +16,7 @@ from running Jekyll). All links between pages are relative.
 | `cv/paperlist.sty` | Formatting and countdown numbering for both lists |
 | `scripts/build_publications.py` | Copies both lists into their website pages |
 | `slides/` | Talk slides (PDF), linked from the website only |
-| `assets/` | Stylesheet, favicon, link icons (arXiv, Google Scholar, ORCID, GitHub from Simple Icons, CC0) |
+| `assets/` | Stylesheet, link icons (arXiv, Google Scholar, ORCID, GitHub from Simple Icons, CC0) |
 | `cv/icons/` | Logos used in the CV (PDF, converted from `assets/icons/`) |
 | `lean-challenges/` | Redirect to the Ten Challenges website (keep: older links point here) |
 
